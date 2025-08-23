@@ -76,6 +76,16 @@ body {
     color: var(--primary-color);
     font-weight: 600;
     font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+/* Ensure logo is always visible */
+body.dark-mode .nav-logo h2 {
+    color: var(--primary-color) !important;
+}
+
+body .nav-logo h2 {
+    color: var(--primary-color) !important;
 }
 
 .nav-menu {
@@ -821,13 +831,15 @@ body {
         left: -100%;
         top: 70px;
         flex-direction: column;
-        background-color: white;
+        background-color: rgba(255, 255, 255, 0.98);
         width: 100%;
         text-align: center;
         transition: 0.3s;
         box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
         z-index: 999;
         padding: 2rem 0;
+        backdrop-filter: blur(10px);
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
     }
     
     .nav-menu.active {
@@ -838,6 +850,14 @@ body {
         padding: 1rem;
         display: block;
         margin: 0;
+        color: #333;
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+    
+    .nav-menu .nav-link:hover {
+        color: var(--primary-color);
+        background: rgba(37, 99, 235, 0.05);
     }
     
     .hamburger {
@@ -989,6 +1009,55 @@ body.dark-mode {
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+/* Dark mode navbar fixes */
+body.dark-mode .navbar {
+    background: rgba(15, 23, 42, 0.95);
+    border-bottom: 1px solid #334155;
+}
+
+body.dark-mode .nav-logo h2 {
+    color: var(--primary-color);
+}
+
+body.dark-mode .nav-link {
+    color: var(--text-color);
+}
+
+body.dark-mode .nav-link:hover {
+    color: var(--primary-color);
+}
+
+body.dark-mode .theme-toggle {
+    color: var(--text-color);
+    border-color: var(--primary-color);
+}
+
+body.dark-mode .theme-toggle:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+body.dark-mode .hamburger span {
+    background-color: var(--text-color);
+}
+
+/* Dark mode mobile menu fixes */
+body.dark-mode .nav-menu {
+    background-color: rgba(30, 41, 59, 0.98);
+    border-top: 1px solid var(--border-color);
+    color: var(--text-color);
+    backdrop-filter: blur(10px);
+}
+
+body.dark-mode .nav-menu .nav-link {
+    color: var(--text-color) !important;
+}
+
+body.dark-mode .nav-menu .nav-link:hover {
+    color: var(--primary-color) !important;
+    background: rgba(37, 99, 235, 0.1);
+}
+
 /* Dark mode specific form styling */
 body.dark-mode .contact-form {
     background: var(--card-bg);
@@ -1016,11 +1085,7 @@ body.dark-mode .form-group textarea:hover {
     background: #1e293b;
 }
 
-body.dark-mode .nav-menu {
-    background-color: var(--card-bg);
-    border-top: 1px solid var(--border-color);
-}
-
-body.dark-mode .hamburger span {
-    background-color: var(--text-color);
+body.dark-mode .form-group input::placeholder,
+body.dark-mode .form-group textarea::placeholder {
+    color: #64748b;
 }
