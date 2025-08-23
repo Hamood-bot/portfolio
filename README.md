@@ -79,6 +79,6 @@ This project is open source and available under the [MIT License](LICENSE).
 
 Mohammad Sabra - University Student & Aspiring Developer
 
-- GitHub: [Update with your GitHub profile]
-- LinkedIn: [Update with your LinkedIn profile]
-- Instagram: [Update with your Instagram profile]
+- GitHub: https://github.com/Hamood-bot
+- LinkedIn: https://www.linkedin.com/in/mohammad-sabra-2b8403351/
+- Instagram: https://www.instagram.com/moesabra/
