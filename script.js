@@ -178,6 +178,9 @@ function initializeExternalLinks() {
             console.log('Clicked link:', this.href);
         });
     });
+
+    // Initialize GitHub Integration
+    initializeGitHubIntegration();
 }
 
 // Smooth scrolling for navigation links
@@ -371,3 +374,185 @@ const imageObserver = new IntersectionObserver((entries, observer) => {
 document.querySelectorAll('img[data-src]').forEach(img => {
     imageObserver.observe(img);
 });
+
+// GitHub Integration Functions
+async function initializeGitHubIntegration() {
+    const username = 'Hamood-bot';
+    
+    try {
+        // Fetch GitHub user data
+        await fetchGitHubUserData(username);
+        
+        // Fetch repositories
+        await fetchGitHubRepositories(username);
+        
+    } catch (error) {
+        console.log('GitHub API error:', error);
+        // Fallback to static content if API fails
+        showFallbackContent();
+    }
+}
+
+async function fetchGitHubUserData(username) {
+    try {
+        const response = await fetch(`https://api.github.com/users/${username}`);
+        const userData = await response.json();
+        
+        // Update profile stats
+        document.getElementById('followers-count').textContent = userData.followers || '0';
+        document.getElementById('repos-count').textContent = userData.public_repos || '0';
+        
+    } catch (error) {
+        console.log('Error fetching user data:', error);
+        // Use fallback numbers
+        document.getElementById('followers-count').textContent = '10+';
+        document.getElementById('repos-count').textContent = '5+';
+    }
+}
+
+async function fetchGitHubRepositories(username) {
+    try {
+        const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=6`);
+        const repos = await response.json();
+        
+        const reposContainer = document.getElementById('repos-container');
+        reposContainer.innerHTML = '';
+        
+        // Show top repositories
+        repos.slice(0, 3).forEach(repo => {
+            const repoCard = createRepositoryCard(repo);
+            reposContainer.appendChild(repoCard);
+        });
+        
+    } catch (error) {
+        console.log('Error fetching repositories:', error);
+        showFallbackRepositories();
+    }
+}
+
+function createRepositoryCard(repo) {
+    const card = document.createElement('div');
+    card.className = 'repo-card';
+    
+    // Language colors
+    const languageColors = {
+        'JavaScript': '#f1e05a',
+        'Python': '#3572A5',
+        'Java': '#b07219',
+        'C#': '#239120',
+        'C++': '#f34b7d',
+        'HTML': '#e34c26',
+        'CSS': '#1572B6',
+        'TypeScript': '#2b7489',
+        'Go': '#00ADD8',
+        'Rust': '#dea584',
+        'PHP': '#4F5D95'
+    };
+    
+    const languageColor = languageColors[repo.language] || '#888888';
+    
+    card.innerHTML = `
+        <div class="repo-header">
+            <a href="${repo.html_url}" target="_blank" class="repo-name">
+                <i class="fas fa-book"></i>
+                ${repo.name}
+            </a>
+            <span class="repo-visibility ${repo.private ? 'private' : 'public'}">
+                ${repo.private ? 'Private' : 'Public'}
+            </span>
+        </div>
+        <p class="repo-description">
+            ${repo.description || 'No description available'}
+        </p>
+        <div class="repo-stats">
+            <div class="repo-language">
+                ${repo.language ? `<span class="language-dot" style="background-color: ${languageColor}"></span>
+                <span>${repo.language}</span>` : ''}
+            </div>
+            <div class="repo-meta">
+                <span><i class="fas fa-star"></i> ${repo.stargazers_count}</span>
+                <span><i class="fas fa-code-branch"></i> ${repo.forks_count}</span>
+            </div>
+        </div>
+    `;
+    
+    return card;
+}
+
+function showFallbackRepositories() {
+    const reposContainer = document.getElementById('repos-container');
+    reposContainer.innerHTML = `
+        <div class="repo-card">
+            <div class="repo-header">
+                <a href="https://github.com/Hamood-bot/SupermarketInventory" target="_blank" class="repo-name">
+                    <i class="fas fa-book"></i>
+                    SupermarketInventory
+                </a>
+                <span class="repo-visibility public">Public</span>
+            </div>
+            <p class="repo-description">
+                A comprehensive inventory management application built with C# and .NET
+            </p>
+            <div class="repo-stats">
+                <div class="repo-language">
+                    <span class="language-dot" style="background-color: #239120"></span>
+                    <span>C#</span>
+                </div>
+                <div class="repo-meta">
+                    <span><i class="fas fa-star"></i> 2</span>
+                    <span><i class="fas fa-code-branch"></i> 1</span>
+                </div>
+            </div>
+        </div>
+        <div class="repo-card">
+            <div class="repo-header">
+                <a href="https://github.com/Hamood-bot/portfolio" target="_blank" class="repo-name">
+                    <i class="fas fa-book"></i>
+                    portfolio
+                </a>
+                <span class="repo-visibility public">Public</span>
+            </div>
+            <p class="repo-description">
+                Professional portfolio website showcasing projects and skills
+            </p>
+            <div class="repo-stats">
+                <div class="repo-language">
+                    <span class="language-dot" style="background-color: #e34c26"></span>
+                    <span>HTML</span>
+                </div>
+                <div class="repo-meta">
+                    <span><i class="fas fa-star"></i> 1</span>
+                    <span><i class="fas fa-code-branch"></i> 0</span>
+                </div>
+            </div>
+        </div>
+        <div class="repo-card">
+            <div class="repo-header">
+                <a href="https://github.com/Hamood-bot" target="_blank" class="repo-name">
+                    <i class="fas fa-book"></i>
+                    Game Projects
+                </a>
+                <span class="repo-visibility public">Public</span>
+            </div>
+            <p class="repo-description">
+                Collection of game development projects using Godot and Roblox
+            </p>
+            <div class="repo-stats">
+                <div class="repo-language">
+                    <span class="language-dot" style="background-color: #f1e05a"></span>
+                    <span>GDScript</span>
+                </div>
+                <div class="repo-meta">
+                    <span><i class="fas fa-star"></i> 3</span>
+                    <span><i class="fas fa-code-branch"></i> 1</span>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function showFallbackContent() {
+    document.getElementById('followers-count').textContent = '10+';
+    document.getElementById('repos-count').textContent = '5+';
+    showFallbackRepositories();
+}

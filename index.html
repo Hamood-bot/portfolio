@@ -18,6 +18,7 @@
             <div class="nav-menu">
                 <a href="#home" class="nav-link">Home</a>
                 <a href="#about" class="nav-link">About</a>
+                <a href="#github-stats" class="nav-link">GitHub</a>
                 <a href="#projects" class="nav-link">Projects</a>
                 <a href="#contact-form" class="nav-link">Contact</a>
                 <button class="theme-toggle" id="theme-toggle">
@@ -83,19 +84,121 @@
         </div>
     </section>
 
-    <!-- GitHub Stats Section -->
-    <section id="github-stats" class="github-stats">
+    <!-- Enhanced GitHub Integration Section -->
+    <section id="github-stats" class="github-section">
         <div class="container">
-            <h2 class="section-title">GitHub Statistics</h2>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <img src="https://github-readme-stats.vercel.app/api?username=Hamood-bot&show_icons=true&theme=radical&hide_border=true" alt="GitHub Stats" class="github-stat-img">
+            <h2 class="section-title">GitHub Portfolio</h2>
+            <p class="section-subtitle">Explore my coding journey and open source contributions</p>
+            
+            <!-- GitHub Profile Overview -->
+            <div class="github-profile">
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        <img src="https://github.com/Hamood-bot.png" alt="Mohammad Sabra" class="avatar-img">
+                        <div class="online-indicator"></div>
+                    </div>
+                    <div class="profile-info">
+                        <h3 class="profile-name">Hamood-bot</h3>
+                        <p class="profile-bio">University Student & Aspiring Developer</p>
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <span class="stat-number" id="followers-count">Loading...</span>
+                                <span class="stat-label">Followers</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="repos-count">Loading...</span>
+                                <span class="stat-label">Repositories</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="commits-count">500+</span>
+                                <span class="stat-label">Commits</span>
+                            </div>
+                        </div>
+                        <a href="https://github.com/Hamood-bot" target="_blank" class="github-follow-btn">
+                            <i class="fab fa-github"></i>
+                            Follow on GitHub
+                        </a>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Hamood-bot&layout=compact&theme=radical&hide_border=true" alt="Top Languages" class="github-stat-img">
+            </div>
+
+            <!-- GitHub Stats Cards -->
+            <div class="github-stats-grid">
+                <div class="stat-card large">
+                    <div class="card-header">
+                        <h4><i class="fas fa-chart-line"></i> GitHub Statistics</h4>
+                    </div>
+                    <img src="https://github-readme-stats.vercel.app/api?username=Hamood-bot&show_icons=true&theme=tokyonight&hide_border=true&bg_color=1a1b27&title_color=70a5fd&text_color=38bdae&icon_color=bf91f3" alt="GitHub Stats" class="github-stat-img">
                 </div>
+                
                 <div class="stat-card">
-                    <img src="https://github-readme-streak-stats.herokuapp.com/?user=Hamood-bot&theme=radical&hide_border=true" alt="GitHub Streak" class="github-stat-img">
+                    <div class="card-header">
+                        <h4><i class="fas fa-code"></i> Top Languages</h4>
+                    </div>
+                    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Hamood-bot&layout=compact&theme=tokyonight&hide_border=true&bg_color=1a1b27&title_color=70a5fd&text_color=38bdae" alt="Top Languages" class="github-stat-img">
+                </div>
+                
+                <div class="stat-card">
+                    <div class="card-header">
+                        <h4><i class="fas fa-fire"></i> Contribution Streak</h4>
+                    </div>
+                    <img src="https://github-readme-streak-stats.herokuapp.com/?user=Hamood-bot&theme=tokyonight&hide_border=true&background=1a1b27&stroke=38bdae&ring=70a5fd&fire=bf91f3&currStreakLabel=38bdae" alt="GitHub Streak" class="github-stat-img">
+                </div>
+            </div>
+
+            <!-- Repository Showcase -->
+            <div class="repos-section">
+                <h3 class="repos-title">
+                    <i class="fas fa-folder-open"></i>
+                    Featured Repositories
+                </h3>
+                <div class="repos-grid" id="repos-container">
+                    <!-- Repositories will be loaded dynamically -->
+                    <div class="repo-card loading">
+                        <div class="loading-shimmer"></div>
+                    </div>
+                    <div class="repo-card loading">
+                        <div class="loading-shimmer"></div>
+                    </div>
+                    <div class="repo-card loading">
+                        <div class="loading-shimmer"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GitHub Activity -->
+            <div class="activity-section">
+                <h3 class="activity-title">
+                    <i class="fas fa-history"></i>
+                    Recent Activity
+                </h3>
+                <div class="activity-container">
+                    <div class="contribution-graph">
+                        <img src="https://ghchart.rshah.org/70a5fd/Hamood-bot" alt="Contribution Graph" class="contribution-img">
+                    </div>
+                    <div class="activity-stats">
+                        <div class="activity-item">
+                            <i class="fas fa-git-alt"></i>
+                            <div class="activity-info">
+                                <span class="activity-label">Most Used Language</span>
+                                <span class="activity-value">C#</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-clock"></i>
+                            <div class="activity-info">
+                                <span class="activity-label">Best Commit Time</span>
+                                <span class="activity-value">Evening</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-calendar-check"></i>
+                            <div class="activity-info">
+                                <span class="activity-label">Most Active Day</span>
+                                <span class="activity-value">Saturday</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
