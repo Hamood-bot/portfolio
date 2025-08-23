@@ -130,76 +130,6 @@ document.addEventListener('DOMContentLoaded', function() {
             messageEl.remove();
         }, 5000);
     }
-
-    // Newsletter Signup Handling
-    const newsletterBtn = document.querySelector('.newsletter-btn');
-    const newsletterInput = document.querySelector('.newsletter-input');
-    
-    if (newsletterBtn && newsletterInput) {
-        newsletterBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const email = newsletterInput.value.trim();
-            
-            if (!email) {
-                showNewsletterMessage('Please enter your email address.', 'error');
-                return;
-            }
-            
-            if (!isValidEmail(email)) {
-                showNewsletterMessage('Please enter a valid email address.', 'error');
-                return;
-            }
-            
-            // Create mailto link for newsletter signup
-            const subject = 'Newsletter Subscription Request';
-            const body = `Hi Mohammad,\n\nI would like to subscribe to your newsletter.\n\nEmail: ${email}\n\nBest regards`;
-            const mailtoLink = `mailto:mohammadRsabra@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            
-            // Open email client
-            window.location.href = mailtoLink;
-            
-            // Show success message
-            showNewsletterMessage('Thanks for subscribing! Please check your email.', 'success');
-            
-            // Clear input
-            newsletterInput.value = '';
-        });
-        
-        // Handle Enter key in newsletter input
-        newsletterInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                newsletterBtn.click();
-            }
-        });
-    }
-    
-    function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    }
-    
-    function showNewsletterMessage(message, type) {
-        // Remove existing message
-        const existingMessage = document.querySelector('.newsletter-message');
-        if (existingMessage) {
-            existingMessage.remove();
-        }
-        
-        // Create new message
-        const messageEl = document.createElement('div');
-        messageEl.className = `newsletter-message ${type}`;
-        messageEl.textContent = message;
-        
-        // Insert after newsletter signup
-        const newsletterSignup = document.querySelector('.newsletter-signup');
-        newsletterSignup.parentNode.insertBefore(messageEl, newsletterSignup.nextSibling);
-        
-        // Remove after 5 seconds
-        setTimeout(() => {
-            messageEl.remove();
-        }, 5000);
-    }
 });
 
 // Smooth scrolling for navigation links
@@ -221,52 +151,121 @@ window.addEventListener('scroll', function() {
     updateNavbarBackground();
 });
 
-// Intersection Observer for animations
+// Enhanced Intersection Observer for animations
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
 };
 
 const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
+    entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            setTimeout(() => {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('animated');
+            }, index * 100); // Stagger animation
         }
     });
 }, observerOptions);
 
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', function() {
-    const animateElements = document.querySelectorAll('.project-card, .contact-method, .about-content');
+    const animateElements = document.querySelectorAll('.project-card, .contact-method, .about-content, .hero-title, .hero-subtitle, .hero-description');
     
-    animateElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    animateElements.forEach((el, index) => {
+        el.classList.add('animate-on-scroll');
         observer.observe(el);
     });
+    
+    // Add scroll progress indicator
+    createScrollProgress();
+    
+    // Add smooth parallax effect to hero
+    addParallaxEffect();
+    
+    // Add typing animation to hero
+    addTypingAnimation();
 });
+
+// Scroll Progress Indicator
+function createScrollProgress() {
+    const progressBar = document.createElement('div');
+    progressBar.className = 'scroll-progress';
+    progressBar.innerHTML = '<div class="scroll-progress-bar"></div>';
+    document.body.appendChild(progressBar);
+    
+    window.addEventListener('scroll', updateScrollProgress);
+}
+
+function updateScrollProgress() {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    
+    const progressBar = document.querySelector('.scroll-progress-bar');
+    if (progressBar) {
+        progressBar.style.width = scrolled + '%';
+    }
+}
+
+// Parallax Effect
+function addParallaxEffect() {
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+        }
+    });
+}
+
+// Enhanced Typing Animation
+function addTypingAnimation() {
+    const heroSubtitle = document.querySelector('.hero-subtitle');
+    if (heroSubtitle) {
+        const originalText = heroSubtitle.textContent;
+        heroSubtitle.textContent = '';
+        
+        setTimeout(() => {
+            typeWriter(heroSubtitle, originalText, 50);
+        }, 1000);
+    }
+}
 
 // Add loading animation
 window.addEventListener('load', function() {
     document.body.style.opacity = '1';
+    
+    // Add floating animation to hero buttons
+    const heroButtons = document.querySelectorAll('.hero-buttons .btn');
+    heroButtons.forEach((btn, index) => {
+        setTimeout(() => {
+            btn.classList.add('animate-fade-in-up');
+        }, 1500 + (index * 200));
+    });
 });
 
 // Initialize body opacity
 document.body.style.opacity = '0';
-document.body.style.transition = 'opacity 0.3s ease';
+document.body.style.transition = 'opacity 0.5s ease';
 
-// Dynamic typing effect for hero subtitle (optional enhancement)
+// Enhanced typing effect
 function typeWriter(element, text, speed = 100) {
     let i = 0;
     element.innerHTML = '';
+    element.style.borderRight = '2px solid #fbbf24';
     
     function type() {
         if (i < text.length) {
             element.innerHTML += text.charAt(i);
             i++;
             setTimeout(type, speed);
+        } else {
+            // Remove cursor after typing is complete
+            setTimeout(() => {
+                element.style.borderRight = 'none';
+            }, 1000);
         }
     }
     
