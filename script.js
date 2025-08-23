@@ -38,6 +38,9 @@ document.addEventListener('DOMContentLoaded', function() {
     body.setAttribute('data-theme', savedTheme);
     updateThemeIcon(savedTheme);
     
+    // Set initial navbar background
+    updateNavbarBackground();
+    
     themeToggle.addEventListener('click', function() {
         const currentTheme = body.getAttribute('data-theme');
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -45,6 +48,9 @@ document.addEventListener('DOMContentLoaded', function() {
         body.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
         updateThemeIcon(newTheme);
+        
+        // Update navbar background for current scroll position
+        updateNavbarBackground();
     });
     
     function updateThemeIcon(theme) {
@@ -55,6 +61,25 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             icon.classList.remove('fa-sun');
             icon.classList.add('fa-moon');
+        }
+    }
+
+    function updateNavbarBackground() {
+        const navbar = document.querySelector('.navbar');
+        const currentTheme = document.body.getAttribute('data-theme');
+        
+        if (window.scrollY > 50) {
+            if (currentTheme === 'dark') {
+                navbar.style.background = 'rgba(31, 41, 55, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+            }
+        } else {
+            if (currentTheme === 'dark') {
+                navbar.style.background = 'rgba(31, 41, 55, 0.95)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
         }
     }
 
@@ -123,12 +148,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Navbar background opacity on scroll
 window.addEventListener('scroll', function() {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-    } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-    }
+    updateNavbarBackground();
 });
 
 // Intersection Observer for animations
