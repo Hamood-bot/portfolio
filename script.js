@@ -130,6 +130,76 @@ document.addEventListener('DOMContentLoaded', function() {
             messageEl.remove();
         }, 5000);
     }
+
+    // Newsletter Signup Handling
+    const newsletterBtn = document.querySelector('.newsletter-btn');
+    const newsletterInput = document.querySelector('.newsletter-input');
+    
+    if (newsletterBtn && newsletterInput) {
+        newsletterBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const email = newsletterInput.value.trim();
+            
+            if (!email) {
+                showNewsletterMessage('Please enter your email address.', 'error');
+                return;
+            }
+            
+            if (!isValidEmail(email)) {
+                showNewsletterMessage('Please enter a valid email address.', 'error');
+                return;
+            }
+            
+            // Create mailto link for newsletter signup
+            const subject = 'Newsletter Subscription Request';
+            const body = `Hi Mohammad,\n\nI would like to subscribe to your newsletter.\n\nEmail: ${email}\n\nBest regards`;
+            const mailtoLink = `mailto:mohammadRsabra@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show success message
+            showNewsletterMessage('Thanks for subscribing! Please check your email.', 'success');
+            
+            // Clear input
+            newsletterInput.value = '';
+        });
+        
+        // Handle Enter key in newsletter input
+        newsletterInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                newsletterBtn.click();
+            }
+        });
+    }
+    
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+    
+    function showNewsletterMessage(message, type) {
+        // Remove existing message
+        const existingMessage = document.querySelector('.newsletter-message');
+        if (existingMessage) {
+            existingMessage.remove();
+        }
+        
+        // Create new message
+        const messageEl = document.createElement('div');
+        messageEl.className = `newsletter-message ${type}`;
+        messageEl.textContent = message;
+        
+        // Insert after newsletter signup
+        const newsletterSignup = document.querySelector('.newsletter-signup');
+        newsletterSignup.parentNode.insertBefore(messageEl, newsletterSignup.nextSibling);
+        
+        // Remove after 5 seconds
+        setTimeout(() => {
+            messageEl.remove();
+        }, 5000);
+    }
 });
 
 // Smooth scrolling for navigation links
