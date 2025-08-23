@@ -28,6 +28,58 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // Dark/Light Mode Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    body.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+    
+    themeToggle.addEventListener('click', function() {
+        const currentTheme = body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+    });
+    
+    function updateThemeIcon(theme) {
+        const icon = themeToggle.querySelector('i');
+        if (theme === 'dark') {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        } else {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        }
+    }
+
+    // Animated Skill Progress Bars
+    const skillBars = document.querySelectorAll('.skill-progress');
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const skillObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const progressBar = entry.target;
+                const targetWidth = progressBar.getAttribute('data-width');
+                progressBar.style.setProperty('--target-width', targetWidth + '%');
+                progressBar.classList.add('animate');
+                skillObserver.unobserve(progressBar);
+            }
+        });
+    }, observerOptions);
+
+    skillBars.forEach(bar => {
+        skillObserver.observe(bar);
+    });
 });
 
 // Smooth scrolling for navigation links
