@@ -57,29 +57,6 @@ document.addEventListener('DOMContentLoaded', function() {
             icon.classList.add('fa-moon');
         }
     }
-
-    // Animated Skill Progress Bars
-    const skillBars = document.querySelectorAll('.skill-progress');
-    const observerOptions = {
-        threshold: 0.5,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const skillObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const progressBar = entry.target;
-                const targetWidth = progressBar.getAttribute('data-width');
-                progressBar.style.setProperty('--target-width', targetWidth + '%');
-                progressBar.classList.add('animate');
-                skillObserver.unobserve(progressBar);
-            }
-        });
-    }, observerOptions);
-
-    skillBars.forEach(bar => {
-        skillObserver.observe(bar);
-    });
 });
 
 // Smooth scrolling for navigation links

@@ -8,8 +8,10 @@
 :root {
     --primary-color: #2563eb;
     --secondary-color: #fbbf24;
-    --text-color: #333333;
+    --text-color: #1f2937;
+    --text-secondary: #6b7280;
     --bg-color: #ffffff;
+    --bg-secondary: #f9fafb;
     --card-bg: #ffffff;
     --border-color: #e5e7eb;
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -17,11 +19,13 @@
 }
 
 [data-theme="dark"] {
-    --text-color: #f3f4f6;
+    --text-color: #f9fafb;
+    --text-secondary: #d1d5db;
     --bg-color: #111827;
+    --bg-secondary: #1f2937;
     --card-bg: #1f2937;
     --border-color: #374151;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
     --hero-bg: linear-gradient(135deg, #1e3a8a 0%, #581c87 100%);
 }
 
@@ -251,7 +255,7 @@ body {
 /* About Section */
 .about {
     padding: 80px 0;
-    background: var(--bg-color);
+    background: var(--bg-secondary);
 }
 
 .section-title {
@@ -270,9 +274,8 @@ body {
 .about-text p {
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
-    color: var(--text-color);
+    color: var(--text-secondary);
     line-height: 1.8;
-    opacity: 0.9;
 }
 
 .skills {
@@ -316,19 +319,34 @@ body {
 .skill-progress {
     height: 100%;
     background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    width: 0%;
     border-radius: 4px;
-    transition: width 2s ease-in-out;
+    transition: all 0.3s ease;
 }
 
-.skill-progress.animate {
-    width: var(--target-width);
+.skill-progress[data-width="85"] {
+    width: 85%;
+}
+
+.skill-progress[data-width="80"] {
+    width: 80%;
+}
+
+.skill-progress[data-width="90"] {
+    width: 90%;
+}
+
+.skill-progress[data-width="75"] {
+    width: 75%;
+}
+
+.skill-progress[data-width="70"] {
+    width: 70%;
 }
 
 /* GitHub Stats Section */
 .github-stats {
     padding: 80px 0;
-    background: var(--card-bg);
+    background: var(--bg-color);
 }
 
 .stats-grid {
@@ -345,6 +363,7 @@ body {
     box-shadow: var(--shadow);
     transition: all 0.3s ease;
     text-align: center;
+    border: 1px solid var(--border-color);
 }
 
 .stat-card:hover {
@@ -410,8 +429,7 @@ body {
 }
 
 .project-description {
-    color: var(--text-color);
-    opacity: 0.8;
+    color: var(--text-secondary);
     margin-bottom: 1rem;
     line-height: 1.6;
 }
@@ -452,8 +470,7 @@ body {
 }
 
 .project-status {
-    color: var(--text-color);
-    opacity: 0.6;
+    color: var(--text-secondary);
     font-style: italic;
     font-size: 0.9rem;
 }
@@ -482,8 +499,7 @@ body {
 
 .contact-description {
     font-size: 1.1rem;
-    color: var(--text-color);
-    opacity: 0.8;
+    color: var(--text-secondary);
     margin-bottom: 3rem;
     line-height: 1.8;
 }
@@ -537,8 +553,7 @@ body {
 }
 
 .email-content p {
-    color: var(--text-color);
-    opacity: 0.8;
+    color: var(--text-secondary);
     margin-bottom: 2rem;
     font-size: 1.1rem;
 }
@@ -632,8 +647,7 @@ body {
 }
 
 .contact-method p {
-    color: var(--text-color);
-    opacity: 0.7;
+    color: var(--text-secondary);
     margin-bottom: 1rem;
     font-size: 0.9rem;
 }
