@@ -434,6 +434,10 @@ body .nav-logo h2 {
     font-size: 1.2rem;
     text-decoration: none;
     transition: all 0.3s ease;
+    cursor: pointer;
+    z-index: 10;
+    position: relative;
+    pointer-events: auto;
 }
 
 .social-link:hover {
@@ -1040,6 +1044,10 @@ body .nav-logo h2 {
     font-weight: 500;
     transition: color 0.3s ease;
     font-size: 0.9rem;
+    cursor: pointer;
+    z-index: 10;
+    position: relative;
+    pointer-events: auto;
 }
 
 .contact-link:hover {

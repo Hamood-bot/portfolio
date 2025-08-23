@@ -130,7 +130,55 @@ document.addEventListener('DOMContentLoaded', function() {
             messageEl.remove();
         }, 5000);
     }
+
+    // Fix External Links
+    initializeExternalLinks();
 });
+
+// Function to ensure external links work properly
+function initializeExternalLinks() {
+    // Get all external links
+    const externalLinks = document.querySelectorAll('a[target="_blank"]');
+    
+    externalLinks.forEach(link => {
+        // Ensure proper attributes
+        link.setAttribute('rel', 'noopener noreferrer');
+        
+        // Add click handler as fallback
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const url = this.getAttribute('href');
+            
+            if (url && url.startsWith('http')) {
+                // Try to open in new window/tab
+                const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+                
+                // Fallback if popup blocked
+                if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+                    // If popup is blocked, try location.href
+                    window.location.href = url;
+                }
+            }
+        });
+        
+        // Add debugging
+        link.addEventListener('mouseenter', function() {
+            console.log('Hovering over link:', this.href);
+        });
+    });
+    
+    // Special handling for social links
+    const socialLinks = document.querySelectorAll('.social-link, .contact-link');
+    socialLinks.forEach(link => {
+        link.style.pointerEvents = 'auto';
+        link.style.cursor = 'pointer';
+        
+        // Debug click events
+        link.addEventListener('click', function(e) {
+            console.log('Clicked link:', this.href);
+        });
+    });
+}
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
