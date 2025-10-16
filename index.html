@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Mohammad Sabra</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="intro.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    
+</head>
+<body class="intro-playing">
+    <!-- Netflix Intro Animation -->
+    <div class="netflix-intro">
+        <div class="intro-content">
+            <picture>
+                <source srcset="assets/Moe.png" type="image/png">
+                <img class="intro-logo-image" src="assets/Moe.png" alt="MOHAMMAD SABRA Logo" />
+            </picture>
+            <div class="intro-sheen"></div>
+        </div>
+        <!-- Intro audio (using provided tu-dum) -->
+        <audio id="intro-audio" preload="auto" autoplay playsinline muted>
+            <source src="assets/netflix.m4a" type="audio/mp4">
+            <source src="assets/netflix.mp3" type="audio/mpeg">
+        </audio>
+        <!-- Tap to play overlay -->
+        <div id="tap-to-play" class="tap-overlay" role="button" aria-label="Tap to play" tabindex="0">
+            Tap to play
+        </div>
+    </div>
+
+    <!-- Who's Watching Overlay -->
+    <div id="whos-watching" class="whos-watching" hidden>
+        <div class="ww-container">
+            <h2>Who's watching?</h2>
+            <div class="profiles">
+                <button class="profile" data-profile="owner" aria-label="Mohammad">
+                    <img src="assets/mohammad.png" alt="Mohammad profile" />
+                    <span>Mohammad</span>
+                </button>
+                <button class="profile" data-profile="sonny" aria-label="Sonny">
+                    <img src="assets/sonny.png" alt="Sonny profile" />
+                    <span>Sonny</span>
+                </button>
+                <button class="profile" data-profile="eric" aria-label="Eric">
+                    <img src="assets/eric.png" alt="Eric profile" />
+                    <span>Eric</span>
+                </button>
+                <button class="profile" data-profile="guest" aria-label="Guest">
+                    <img src="assets/thumbs/guest.jpg" alt="Guest profile" />
+                    <span>Guest</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Netflix-style Top Nav for Home -->
+    <header class="nf-nav" aria-label="Netflix-style navigation">
+        <div class="nf-nav__container">
+            <div class="nf-nav__left">
+                <div class="nf-logo">
+                    <img src="assets/Moe.png" alt="MS Logo" class="logo-image" />
+                </div>
+                <nav class="nf-links">
+                    <a href="index.html#billboard" class="nf-link" data-transition>Home</a>
+                    <a href="projects.html" class="nf-link" data-transition>Projects</a>
+                    <a href="timeline.html" class="nf-link" data-transition>Timeline</a>
+                    <a href="about.html" class="nf-link" data-transition>About</a>
+                    <a href="about.html#hire-me" class="nf-link" data-transition>Hire Me</a>
+                </nav>
+            </div>
+            <div class="nf-nav__right">
+                <div class="nf-profile">
+                    <img id="nf-profile-avatar" src="assets/guest.jpg" alt="Profile" />
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Billboard with background video -->
+        <div id="route-transition" class="route-transition" aria-hidden="true"></div>
+    <section id="billboard" class="billboard" aria-label="Featured">
+        <video id="billboard-video" class="billboard-video is-active" muted playsinline autoplay preload="auto"></video>
+        <video id="billboard-video-2" class="billboard-video" muted playsinline preload="auto" aria-hidden="true"></video>
+        <div class="billboard-overlay"></div>
+        <div class="billboard-content">
+            <h1 class="billboard-title">Mohammad Sabra</h1>
+            <p class="billboard-sub">C# and Java developer with Python experience. I build games and backend systems, focused on clean design, performance, and fun user experiences. Studying at LIU and always shipping something new.</p>
+            <div class="billboard-actions">
+                <a href="projects.html" class="btn btn-primary" data-transition>Explore Projects</a>
+                <a href="books.html" class="btn btn-secondary" data-transition>Explore Books</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">PORTFOLIO</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="about.html#hire-me" class="nav-link">Hire Me</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="greeting">Hello, I'm</span>
+                <span class="name">Mohammad Sabra</span>
+            </h1>
+            <p class="hero-subtitle">Full Stack Developer | UI/UX Designer | Creative Thinker</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="about.html#hire-me" class="btn btn-secondary" data-transition>Get In Touch</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="100" cy="100" r="80" fill="#e50914"/>
+                            <text x="100" y="115" font-size="60" fill="white" text-anchor="middle" font-family="Arial">MS</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <p>I'm a passionate developer with a love for creating beautiful and functional web experiences. With expertise in modern web technologies, I bring ideas to life through clean code and intuitive design.</p>
+                    <p>My journey in tech has been driven by curiosity and a desire to solve real-world problems. I specialize in building responsive, user-friendly applications that make a difference.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <h3>50+</h3>
+                            <p>Projects Completed</p>
+                        </div>
+                        <div class="stat">
+                            <h3>5+</h3>
+                            <p>Years Experience</p>
+                        </div>
+                        <div class="stat">
+                            <h3>100+</h3>
+                            <p>Happy Clients</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Home Rows (Top Picks only) -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Top Picks for <span id="profile-name">Mohammad</span></h2>
+            <div class="row-container" data-row="top-picks">
+                <button class="row-nav prev" aria-label="Scroll left">‹</button>
+                <div class="row" tabindex="0">
+                    <div class="tile" tabindex="0"
+                        data-project-id="spex"
+                        data-title="Spex"
+                        data-desc="An FPS game made in Godot, coded in C#. Work in progress exploring gameplay mechanics, physics, and game feel."
+                        data-tags="Game,Godot,C#"
+                        data-tech="Godot, C#"
+                        data-demo="#"
+                        data-github="https://github.com/Hamood-bot"
+                        data-video="assets/banner.mp4"
+                        style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url('assets/spex-thumb.jpg') center/cover no-repeat;">
+                        <div class="tile-overlay"></div>
+                        <div class="progress" hidden></div>
+                        <div class="tile-title">Spex</div>
+                    </div>
+                    <div class="tile" tabindex="0"
+                        data-project-id="picotat"
+                        data-title="Picotat"
+                        data-desc="A Discord bot hosting service providing reliable infrastructure for Discord bots and communities."
+                        data-tags="Service,Hosting,Discord"
+                        data-tech="Node.js, Infrastructure"
+                        data-demo="https://picotat.com"
+                        data-github="https://github.com/Hamood-bot"
+                        data-video="assets/picotat.mp4"
+                        style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url('assets/picotat-thumb.jpg') center/cover no-repeat;">
+                        <div class="tile-overlay"></div>
+                        <div class="progress" hidden></div>
+                        <div class="tile-title">Picotat</div>
+                    </div>
+                    <div class="tile" tabindex="0"
+                        data-project-id="audiocraft"
+                        data-title="Audiocraft"
+                        data-desc="A simple audio visualizer built in JavaScript using Canvas and WebAudio API for real-time visualization."
+                        data-tags="JavaScript,Audio,Visualizer"
+                        data-tech="JavaScript, Canvas/WebAudio"
+                        data-demo="https://www.codedex.io/jwnQVQSuhjffVhlbedM2/live"
+                        data-github="https://github.com/Hamood-bot"
+                        data-video="assets/banner3.mp4"
+                        style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url('assets/audiocraft-thumb.jpg') center/cover no-repeat;">
+                        <div class="tile-overlay"></div>
+                        <div class="progress" hidden></div>
+                        <div class="tile-title">Audiocraft</div>
+                    </div>
+                    
+                </div>
+                <button class="row-nav next" aria-label="Scroll right">›</button>
+            </div>
+
+            
+
+            <h2 class="section-title" style="margin-top:3rem">More to Explore</h2>
+            <div class="row-container" data-row="today">
+                <button class="row-nav prev" aria-label="Scroll left">‹</button>
+                <div class="row" tabindex="0">
+                    <div class="tile" tabindex="0" 
+                        data-title="Timeline" 
+                        data-desc="Milestones, projects, and key learning moments." 
+                        data-tags="Journey,Timeline"
+                        data-link="timeline.html"
+                        style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('assets/timeline-thumb.jpg') center/cover no-repeat;">
+                        <img class="tile-thumb" src="assets/thumbs/timeline.jpg" alt="Timeline thumbnail" />
+                        <div class="tile-overlay"></div>
+                        <div class="tile-title">Timeline</div>
+                    </div>
+                    <div class="tile" tabindex="0" 
+                        data-title="Books" 
+                        data-desc="Books that shaped my coding and design thinking." 
+                        data-tags="Books,Learning"
+                        data-link="books.html"
+                        style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('assets/C#.png') center/cover no-repeat;">
+                        <img class="tile-thumb" src="assets/thumbs/books.jpg" alt="Books thumbnail" />
+                        <div class="tile-overlay"></div>
+                        <div class="tile-title">Books</div>
+                    </div>
+                    <div class="tile" tabindex="0" 
+                        data-title="Contact" 
+                        data-desc="Hire me — email and Instagram" 
+                        data-tags="Contact,Hire" 
+                        data-link="about.html#hire-me"
+                        style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('assets/contact-thumb.jpg') center/cover no-repeat;">
+                        <img class="tile-thumb" src="assets/thumbs/contact.jpg" alt="Contact thumbnail" />
+                        <div class="tile-overlay"></div>
+                        <div class="tile-title">Contact</div>
+                    </div>
+                    <div class="tile" tabindex="0" 
+                        data-title="Skills & Tech" 
+                        data-desc="Technologies and tools I work with" 
+                        data-tags="Skills" 
+                        data-link="about.html#skills"
+                        style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('assets/skills-thumb.jpg') center/cover no-repeat;">
+                        <img class="tile-thumb" src="assets/thumbs/skills.jpg" alt="Skills thumbnail" />
+                        <div class="tile-overlay"></div>
+                        <div class="tile-title">Skills</div>
+                    </div>
+                    <div class="tile" tabindex="0" 
+                        data-title="GitHub" 
+                        data-desc="Check out my code and open source contributions" 
+                        data-tags="GitHub" 
+                        data-link="https://github.com/Hamood-bot"
+                        style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('assets/github-thumb.jpg') center/cover no-repeat;">
+                        <img class="tile-thumb" src="assets/thumbs/github.jpg" alt="GitHub thumbnail" />
+                        <div class="tile-overlay"></div>
+                        <div class="tile-title">GitHub</div>
+                    </div>
+                </div>
+                <button class="row-nav next" aria-label="Scroll right">›</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Detail Modal -->
+    <div id="project-modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">✕</button>
+            <div class="modal-banner">
+                <video id="modal-video" playsinline controls preload="metadata"></video>
+            </div>
+            <div class="modal-body">
+                <h3 id="modal-title"></h3>
+                <p id="modal-desc"></p>
+                <div id="modal-tags" class="modal-tags"></div>
+                <div class="modal-actions">
+                    <a id="modal-demo" class="btn btn-primary" target="_blank" rel="noopener">View Demo</a>
+                    <a id="modal-github" class="btn btn-secondary" target="_blank" rel="noopener">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Mohammad Sabra. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About - Mohammad Sabra</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="intro.css" />
+</head>
+<body class="nf-home">
+  <header class="nf-nav" aria-label="Netflix-style navigation">
+    <div class="nf-nav__container">
+      <div class="nf-nav__left">
+        <div class="nf-logo">
+          <img src="assets/Moe.png" alt="MS Logo" class="logo-image" />
+        </div>
+        <nav class="nf-links">
+          <a href="index.html#billboard" class="nf-link" data-transition>Home</a>
+          <a href="projects.html" class="nf-link" data-transition>Projects</a>
+          <a href="timeline.html" class="nf-link" data-transition>Timeline</a>
+          <a href="about.html#top" class="nf-link" data-transition>About</a>
+           <a href="about.html#hire-me" class="nf-link" data-transition>Hire Me</a>
+        </nav>
+      </div>
+      <div class="nf-nav__right">
+        <div class="nf-profile">
+          <img id="nf-profile-avatar" src="assets/mohammad.png" alt="Profile" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div id="route-transition" class="route-transition" aria-hidden="true"></div>
+
+  <main style="padding-top:72px">
+    <main id="top" style="padding-top:72px">
+
+    <!-- Skills Tabs Section -->
+    <section id="skills" class="skills" aria-label="Skills">
+      <div class="container">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-tabs tabs" data-tabs>
+          <div class="tab-buttons" role="tablist" aria-label="Skills categories">
+            <button class="tab-button active" role="tab" aria-selected="true" data-tab-target="#tab-all">All</button>
+            <button class="tab-button" role="tab" aria-selected="false" data-tab-target="#tab-lang">Languages</button>
+            <button class="tab-button" role="tab" aria-selected="false" data-tab-target="#tab-game">Game & Design</button>
+            <button class="tab-button" role="tab" aria-selected="false" data-tab-target="#tab-db">Databases</button>
+          </div>
+
+          <div class="tab-panels">
+            <!-- All -->
+            <div id="tab-all" class="tab-panel active" role="tabpanel">
+              <div class="skills-grid-squares">
+                <div class="skill-square has-icon skill-python"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/icons/python/python-original.svg" alt="Python" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/python.svg';this.classList.add('mono')" /><span>Python</span></div>
+                <div class="skill-square has-icon skill-java"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/icons/java/java-original.svg" alt="Java" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/java.svg';this.classList.add('mono')" /><span>Java</span></div>
+                <div class="skill-square has-icon skill-csharp"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/icons/csharp/csharp-original.svg" alt="C#" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/csharp.svg';this.classList.add('mono')" /><span>C#</span></div>
+                <div class="skill-square has-icon skill-godot"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/icons/godot/godot-original.svg" alt="Godot" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/godotengine.svg';this.classList.add('mono')" /><span>Godot</span></div>
+                <div class="skill-square has-icon skill-aseprite"><img class="mono" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/aseprite.svg" alt="Aseprite" /><span>Aseprite</span></div>
+                <div class="skill-square has-icon skill-postgresql"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/postgresql.svg';this.classList.add('mono')" /><span>PostgreSQL</span></div>
+              </div>
+            </div>
+
+            <!-- Languages -->
+            <div id="tab-lang" class="tab-panel" role="tabpanel" hidden>
+              <div class="skills-grid-squares">
+                <div class="skill-square has-icon skill-python"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/icons/python/python-original.svg" alt="Python" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/python.svg';this.classList.add('mono')" /><span>Python</span></div>
+                <div class="skill-square has-icon skill-java"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/icons/java/java-original.svg" alt="Java" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/java.svg';this.classList.add('mono')" /><span>Java</span></div>
+                <div class="skill-square has-icon skill-csharp"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/icons/csharp/csharp-original.svg" alt="C#" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/csharp.svg';this.classList.add('mono')" /><span>C#</span></div>
+              </div>
+            </div>
+
+            <!-- Game & Design -->
+            <div id="tab-game" class="tab-panel" role="tabpanel" hidden>
+              <div class="skills-grid-squares">
+                <div class="skill-square has-icon skill-godot"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/icons/godot/godot-original.svg" alt="Godot" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/godotengine.svg';this.classList.add('mono')" /><span>Godot</span></div>
+                <div class="skill-square has-icon skill-aseprite"><img class="mono" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/aseprite.svg" alt="Aseprite" /><span>Aseprite</span></div>
+              </div>
+            </div>
+
+            <!-- Databases -->
+            <div id="tab-db" class="tab-panel" role="tabpanel" hidden>
+              <div class="skills-grid-squares">
+                <div class="skill-square has-icon skill-postgresql"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/postgresql.svg';this.classList.add('mono')" /><span>PostgreSQL</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+    <!-- Hire Me / About Me Contact Section -->
+    <section id="hire-me" class="contact" aria-label="Hire Me">
+      <div class="container contact-content" style="align-items:center">
+        <div class="contact-info">
+          <h3>Hire Me</h3>
+          <p>I'm Mohammad (Moe). I build with C# and Java, dabble in Python, and I’m into game dev. If you’d like to collaborate or have an opportunity, reach out.</p>
+
+          <div class="contact-details">
+            <div class="contact-item">
+              <!-- email icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 7.5v9a2.25 2.25 0 01-2.25 2.25H4.5A2.25 2.25 0 012.25 16.5v-9m19.5 0A2.25 2.25 0 0019.5 5.25H4.5A2.25 2.25 0 002.25 7.5m19.5 0L12 13.5 2.25 7.5"/></svg>
+              <a href="mailto:MohammadRsabra@gmail.com" style="color:#fff;text-decoration:none">MohammadRsabra@gmail.com</a>
+            </div>
+            <div class="contact-item">
+              <!-- instagram icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7.5 2.25h9a5.25 5.25 0 015.25 5.25v9a5.25 5.25 0 01-5.25 5.25h-9A5.25 5.25 0 012.25 16.5v-9A5.25 5.25 0 017.5 2.25zm0 1.5A3.75 3.75 0 003.75 7.5v9A3.75 3.75 0 007.5 20.25h9a3.75 3.75 0 003.75-3.75v-9A3.75 3.75 0 0016.5 3.75h-9zM12 7.875a4.125 4.125 0 110 8.25 4.125 4.125 0 010-8.25zm0 1.5a2.625 2.625 0 100 5.25 2.625 2.625 0 000-5.25zM17.25 6a.75.75 0 110 1.5.75.75 0 010-1.5z"/></svg>
+              <a href="https://instagram.com/moesabra" target="_blank" rel="noopener" style="color:#fff;text-decoration:none">@moesabra</a>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div style="width:260px;max-width:80vw;aspect-ratio:1/1;border-radius:12px;background:#222 url('assets/mohammad.png') center/cover no-repeat;border:1px solid rgba(255,255,255,.12);box-shadow:0 12px 40px rgba(0,0,0,.5);margin:0 auto"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

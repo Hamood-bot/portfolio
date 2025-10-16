@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Books — Mohammad Sabra</title>
+    <meta name="description" content="Books that shaped my programming journey — C#, .NET, design patterns, and clean code." />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+    /* Page-scoped tweaks for the Books page */
+    /* Increased top padding so hero content sits below the fixed nav */
+    .books-hero { padding: 160px 2rem 1.25rem; background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0)); text-align: center; }
+    /* Ensure main content doesn't sit under nav on small screens */
+    main.books-page { margin-top: 12px; }
+        .books-hero h1 { font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 .25rem; }
+        .books-hero p { color: var(--netflix-light-gray); margin: 0 auto 1rem; max-width: 70ch; }
+        .books-toolbar { display: flex; align-items: center; gap: .75rem; justify-content: center; padding: 0 2rem 2rem; }
+        .search-input { width: min(720px, 92vw); padding: .9rem 1rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); border-radius: 10px; color: #fff; outline: none; transition: box-shadow .2s ease, border-color .2s ease; }
+        .search-input::placeholder { color: #aaa; }
+        .search-input:focus { border-color: var(--netflix-red); box-shadow: 0 0 0 4px rgba(229,9,20,0.2); }
+        .book-modal .modal-content { width: min(860px, 92vw); }
+        .book-modal .modal-body { display: grid; grid-template-columns: 260px 1fr; gap: 1.25rem; padding: 1.25rem; }
+        .book-modal h2 { margin: 0 0 .25rem; }
+        .book-modal .book-author { margin: 0 0 1rem; color: var(--netflix-light-gray); }
+        @media (max-width: 720px) { .book-modal .modal-body { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <!-- Route transition overlay for smooth page changes -->
+    <div id="route-transition" class="route-transition" aria-hidden="true"></div>
+
+    <!-- Top nav (consistent with Home) -->
+    <header class="nf-nav" aria-label="Site navigation">
+        <div class="nf-nav__container">
+            <div class="nf-nav__left">
+                <div class="nf-logo">
+                    <img src="assets/Moe.png" alt="MS Logo" class="logo-image" />
+                </div>
+                <nav class="nf-links">
+                    <a href="index.html#billboard" class="nf-link" data-transition>Home</a>
+                    <a href="projects.html" class="nf-link" data-transition>Projects</a>
+                    <a href="timeline.html" class="nf-link" data-transition>Timeline</a>
+                    <a href="about.html" class="nf-link" data-transition>About</a>
+                    <a href="about.html#hire-me" class="nf-link" data-transition>Hire Me</a>
+                </nav>
+            </div>
+            <div class="nf-nav__right">
+                <div class="nf-profile">
+                    <img id="nf-profile-avatar" src="assets/mohammad.png" alt="Profile" />
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="books-page" id="content">
+        <section class="books-hero">
+            <h1>My Library</h1>
+            <p>Books that shaped my programming journey — fundamentals, craftsmanship, and software design.</p>
+            <div class="books-toolbar" role="search">
+                <input id="bookSearch" class="search-input" type="search" placeholder="Search by title or author" aria-label="Search books" />
+            </div>
+        </section>
+
+        <!-- Responsive book grid -->
+        <section class="books-section" aria-labelledby="books-heading">
+            <h2 id="books-heading" class="books-heading">All Books</h2>
+            <div id="books-grid" class="books-grid">
+                <!-- The C# Yellow Book -->
+                <article class="book-card" tabindex="0" data-title="The C# Yellow Book" data-author="Rob Miles" data-desc="C# fundamentals explained clearly with friendly examples. A great foundation for beginners and a refresher for pros." data-cover="assets/C.png">
+                    <div class="book-cover" style="background-image:url('assets/C.png')"></div>
+                    <div class="book-info">
+                        <h3 class="book-title">The C# Yellow Book</h3>
+                        <p class="book-author">Rob Miles</p>
+                    </div>
+                </article>
+
+                <!-- Pro C# 10 with .NET 6 -->
+                <article class="book-card" tabindex="0" data-title="Pro C# 10 with .NET 6" data-author="Andrew Troelsen" data-desc="Comprehensive deep-dive into modern C# and .NET — language features, CLR, and real-world practices." data-cover="assets/andrew.jpg">
+                    <div class="book-cover" style="background-image:url('assets/andrew.jpg')"></div>
+                    <div class="book-info">
+                        <h3 class="book-title">Pro C# 10 with .NET 6</h3>
+                        <p class="book-author">Andrew Troelsen</p>
+                    </div>
+                </article>
+
+                <!-- C# in Depth -->
+                <article class="book-card" tabindex="0" data-title="C# in Depth" data-author="Jon Skeet" data-desc="A thorough exploration of C# features and best practices that sharpen your understanding beyond the basics." data-cover="assets/depth.jpg">
+                    <div class="book-cover" style="background-image:url('assets/depth.jpg')"></div>
+                    <div class="book-info">
+                        <h3 class="book-title">C# in Depth</h3>
+                        <p class="book-author">Jon Skeet</p>
+                    </div>
+                </article>
+
+                <!-- CLR via C# -->
+                <article class="book-card" tabindex="0" data-title="CLR via C#" data-author="Jeffrey Richter" data-desc="How the CLR works under the hood — memory, threading, and runtime behaviors that impact your C# apps." data-cover="assets/CLR%20via%20C.jpg">
+                    <div class="book-cover" style="background-image:url('assets/CLR%20via%20C.jpg')"></div>
+                    <div class="book-info">
+                        <h3 class="book-title">CLR via C#</h3>
+                        <p class="book-author">Jeffrey Richter</p>
+                    </div>
+                </article>
+
+                <!-- Clean Code -->
+                <article class="book-card" tabindex="0" data-title="Clean Code" data-author="Robert C. Martin" data-desc="Timeless advice on writing readable, maintainable, and testable code." data-cover="assets/Clean%20Code.jpg">
+                    <div class="book-cover" style="background-image:url('assets/Clean%20Code.jpg')"></div>
+                    <div class="book-info">
+                        <h3 class="book-title">Clean Code</h3>
+                        <p class="book-author">Robert C. Martin</p>
+                    </div>
+                </article>
+
+                <!-- The Pragmatic Programmer -->
+                <article class="book-card" tabindex="0" data-title="The Pragmatic Programmer" data-author="Andrew Hunt & David Thomas" data-desc="Practical wisdom on software craftsmanship and thinking like a pragmatic developer." data-cover="assets/The%20pragmatic%20programmaer.jpg">
+                    <div class="book-cover" style="background-image:url('assets/The%20pragmatic%20programmaer.jpg')"></div>
+                    <div class="book-info">
+                        <h3 class="book-title">The Pragmatic Programmer</h3>
+                        <p class="book-author">Andrew Hunt &amp; David Thomas</p>
+                    </div>
+                </article>
+
+                <!-- Code Complete -->
+                <article class="book-card" tabindex="0" data-title="Code Complete" data-author="Steve McConnell" data-desc="End-to-end software construction best practices from design through debugging." data-cover="assets/Code%20complete.jpg">
+                    <div class="book-cover" style="background-image:url('assets/Code%20complete.jpg')"></div>
+                    <div class="book-info">
+                        <h3 class="book-title">Code Complete</h3>
+                        <p class="book-author">Steve McConnell</p>
+                    </div>
+                </article>
+
+                <!-- Design Patterns -->
+                <article class="book-card" tabindex="0" data-title="Design Patterns" data-author="Erich Gamma et al." data-desc="The classic catalog of object-oriented design patterns by the Gang of Four." data-cover="assets/desgin%20patterns.jpg">
+                    <div class="book-cover" style="background-image:url('assets/desgin%20patterns.jpg')"></div>
+                    <div class="book-info">
+                        <h3 class="book-title">Design Patterns</h3>
+                        <p class="book-author">Erich Gamma et al.</p>
+                    </div>
+                </article>
+
+                <!-- Head First Design Patterns -->
+                <article class="book-card" tabindex="0" data-title="Head First Design Patterns" data-author="Eric Freeman" data-desc="Pattern learning made visual and fun — memorable explanations with engaging examples." data-cover="assets/Head%20first%20desgin.jpeg">
+                    <div class="book-cover" style="background-image:url('assets/Head%20first%20desgin.jpeg')"></div>
+                    <div class="book-info">
+                        <h3 class="book-title">Head First Design Patterns</h3>
+                        <p class="book-author">Eric Freeman</p>
+                    </div>
+                </article>
+
+                <!-- Refactoring -->
+                <article class="book-card" tabindex="0" data-title="Refactoring" data-author="Martin Fowler" data-desc="Techniques to improve code structure without changing external behavior." data-cover="assets/Refactoring%20code.jpg">
+                    <div class="book-cover" style="background-image:url('assets/Refactoring%20code.jpg')"></div>
+                    <div class="book-info">
+                        <h3 class="book-title">Refactoring</h3>
+                        <p class="book-author">Martin Fowler</p>
+                    </div>
+                </article>
+
+                <!-- Clean Architecture -->
+                <article class="book-card" tabindex="0" data-title="Clean Architecture" data-author="Robert C. Martin" data-desc="Guidelines for designing systems that are independent of frameworks, UI, databases, and external agencies." data-cover="assets/Clean%20architetcutre.jpg">
+                    <div class="book-cover" style="background-image:url('assets/Clean%20architetcutre.jpg')"></div>
+                    <div class="book-info">
+                        <h3 class="book-title">Clean Architecture</h3>
+                        <p class="book-author">Robert C. Martin</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Book Detail Modal -->
+    <div id="book-modal" class="modal book-modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">✕</button>
+            <div class="modal-body">
+                <div>
+                    <img id="modal-cover" class="modal-book-cover" alt="Book cover" />
+                </div>
+                <div>
+                    <h2 id="modal-title"></h2>
+                    <p id="modal-author" class="book-author"></p>
+                    <p id="modal-desc"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page scripts -->
+    <script>
+    (function(){
+        // Simple search filter
+        const input = document.getElementById('bookSearch');
+        const cards = Array.from(document.querySelectorAll('#books-grid .book-card'));
+        input?.addEventListener('input', () => {
+            const q = input.value.trim().toLowerCase();
+            cards.forEach(card => {
+                const t = (card.dataset.title || '').toLowerCase();
+                const a = (card.dataset.author || '').toLowerCase();
+                const match = !q || t.includes(q) || a.includes(q);
+                card.style.display = match ? '' : 'none';
+            });
+        });
+
+        // Modal logic
+        const modal = document.getElementById('book-modal');
+        const img = document.getElementById('modal-cover');
+        const mTitle = document.getElementById('modal-title');
+        const mAuthor = document.getElementById('modal-author');
+        const mDesc = document.getElementById('modal-desc');
+        const closeBtn = modal?.querySelector('.modal-close');
+        function openModal(data){
+            if (!modal) return;
+            const cover = data.cover || '';
+            if (cover.startsWith('assets/')) { img.src = cover; img.style.display = ''; }
+            else { img.removeAttribute('src'); img.style.display = 'none'; }
+            mTitle.textContent = data.title || '';
+            mAuthor.textContent = data.author || '';
+            mDesc.textContent = data.desc || '';
+            modal.hidden = false;
+        }
+        function closeModal(){ if (modal) modal.hidden = true; }
+        closeBtn?.addEventListener('click', closeModal);
+        modal?.addEventListener('click', (e)=>{ if (e.target === modal || e.target.classList.contains('modal-backdrop')) closeModal(); });
+        document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') closeModal(); });
+        cards.forEach(card => {
+            const open = () => openModal({
+                title: card.dataset.title,
+                author: card.dataset.author,
+                desc: card.dataset.desc,
+                cover: card.dataset.cover
+            });
+            card.addEventListener('click', open);
+            card.addEventListener('keypress', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+        });
+    })();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

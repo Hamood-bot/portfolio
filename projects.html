@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects - Mohammad Sabra</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="intro.css" />
+</head>
+<body class="nf-home">
+  <header class="nf-nav" aria-label="Netflix-style navigation">
+    <div class="nf-nav__container">
+      <div class="nf-nav__left">
+        <div class="nf-logo">
+          <img src="assets/Moe.png" alt="MS Logo" class="logo-image" />
+        </div>
+        <nav class="nf-links">
+          <a href="index.html#billboard" class="nf-link" data-transition>Home</a>
+          <a href="projects.html" class="nf-link" data-transition>Projects</a>
+          <a href="timeline.html" class="nf-link" data-transition>Timeline</a>
+          <a href="about.html" class="nf-link" data-transition>About</a>
+          <a href="about.html#hire-me" class="nf-link" data-transition>Hire Me</a>
+        </nav>
+      </div>
+      <div class="nf-nav__right">
+        <div class="nf-profile">
+          <img id="nf-profile-avatar" src="assets/mohammad.png" alt="Profile" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div id="route-transition" class="route-transition" aria-hidden="true"></div>
+
+  <main style="padding-top:72px">
+    <section class="projects">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+
+        <div class="row-container projects-fullscreen" data-row="featured" style="margin-top:1rem">
+          <button class="row-nav prev" aria-label="Previous project">‹</button>
+
+          <!-- Hidden data source tiles -->
+          <div class="row project-data" tabindex="-1" style="display:none">
+            <div class="tile" data-project-id="spex" data-title="Spex (FPS WIP)" data-desc="An FPS game made in Godot, coded in C#. Work in progress." data-tags="Game,Godot,C#" data-tech="Godot, C#" data-demo="#" data-github="https://github.com/Hamood-bot" data-video="assets/banner.mp4"></div>
+            <div class="tile" data-project-id="audiocraft" data-title="Audiocraft (Audio Visualizer)" data-desc="A simple audio visualizer built in JavaScript." data-tags="JavaScript,Audio,Visualizer" data-tech="JavaScript, Canvas/WebAudio" data-demo="https://www.codedex.io/jwnQVQSuhjffVhlbedM2/live" data-github="https://github.com/Hamood-bot" data-video="assets/banner3.mp4"></div>
+            <div class="tile" data-project-id="picotat" data-title="Picotat (Discord Hosting)" data-desc="A Discord bot hosting service." data-tags="Service,Hosting,Discord" data-tech="Node.js, Hosting" data-demo="https://picotat.com" data-github="https://github.com/Hamood-bot" data-video="assets/picotat.mp4"></div>
+          </div>
+
+          <!-- Single-project stage -->
+          <div class="project-stage" role="group" aria-label="Project preview">
+            <div class="stage-media">
+              <video id="stage-video" playsinline muted loop></video>
+            </div>
+            <div class="stage-info">
+              <h2 id="stage-title"></h2>
+              <p id="stage-desc"></p>
+              <div id="stage-tags" class="modal-tags"></div>
+              <div class="stage-actions">
+                <a id="stage-demo" class="btn btn-primary" target="_blank" rel="noopener">View Demo</a>
+                <a id="stage-github" class="btn btn-secondary" target="_blank" rel="noopener">GitHub</a>
+              </div>
+            </div>
+          </div>
+
+          <button class="row-nav next" aria-label="Next project">›</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="project-modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close">✕</button>
+      <div class="modal-banner">
+        <video id="modal-video" playsinline controls preload="metadata"></video>
+      </div>
+      <div class="modal-body">
+        <h3 id="modal-title"></h3>
+        <p id="modal-desc"></p>
+        <div id="modal-tags" class="modal-tags"></div>
+        <div class="modal-actions">
+          <a id="modal-demo" class="btn btn-primary" target="_blank" rel="noopener">View Demo</a>
+          <a id="modal-github" class="btn btn-secondary" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
