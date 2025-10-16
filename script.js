@@ -16,6 +16,38 @@ if (hamburger && navMenu) {
     });
 }
 
+// Netflix-style mobile hamburger (inject only if nf-nav exists and no nf-hamburger present)
+(function setupNfMobileHamburger(){
+    const nfNav = document.querySelector('.nf-nav');
+    const nfContainer = document.querySelector('.nf-nav__container');
+    if (!nfNav || !nfContainer) return;
+    if (nfContainer.querySelector('.nf-hamburger')) return; // already present
+
+    const btn = document.createElement('button');
+    btn.className = 'nf-hamburger';
+    btn.setAttribute('aria-label','Open navigation');
+    btn.innerHTML = '<span></span><span></span><span></span>';
+    // insert near right side
+    nfContainer.appendChild(btn);
+
+    btn.addEventListener('click', () => {
+        nfNav.classList.toggle('mobile-open');
+        // prevent body scroll when menu open
+        if (nfNav.classList.contains('mobile-open')) document.body.style.overflow = 'hidden';
+        else document.body.style.overflow = '';
+    });
+
+    // Close mobile nf-links when clicking a nf-link
+    nfContainer.querySelectorAll('.nf-links a').forEach(a => {
+        a.addEventListener('click', () => {
+            if (nfNav.classList.contains('mobile-open')) {
+                nfNav.classList.remove('mobile-open');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+})();
+
 // Navbar scroll effect
 const navbar = document.querySelector('.navbar');
 const nfNav = document.querySelector('.nf-nav');
